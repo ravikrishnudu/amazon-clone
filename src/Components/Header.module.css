@@ -27,7 +27,7 @@
   padding: 10px;
   border: none;
   width: 100%;
-  outline: #cd9042  ;
+  outline: #cd9042;
 }
 .headerSearchInput:focus {
   border-color: #cd9042;
@@ -53,10 +53,12 @@
 }
 
 .headerOptionLineOne {
+  text-decoration: none;
   font-size: 10px;
 }
 
 .headerOptionLineTwo {
+  text-decoration: none;
   font-size: 13px;
   font-weight: 800;
 }
@@ -70,4 +72,5 @@
 .headerCartCount {
   margin-left: 10px;
   margin-right: 10px;
+  text-decoration: none;
 }
