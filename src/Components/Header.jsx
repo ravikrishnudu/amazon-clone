@@ -13,6 +13,7 @@ function Header() {
     }
   };
   const [{ basket, user }] = useStateValue();
+
   return (
     <div className={styles.header}>
       <Link to="/">
@@ -30,7 +31,7 @@ function Header() {
       <div className={styles.headerNav}>
         <Link to={!user && "/login"}>
           <div onClick={handleAunthentication} className={styles.headerOption}>
-            <span className={styles.headerOptionLineOne}>Hello Guest</span>
+            <span className={styles.headerOptionLineOne}>Hello {!user? 'Guest': user.email}</span>
             <span className={styles.headerOptionLineTwo}>
               {user ? "sign Out" : "sign In"}
             </span>
