@@ -23,11 +23,9 @@ function Payment() {
   const [clientSecret, setClientSecret] = useState(true);
 
   useEffect(() => {
-    // generate the special stripe secret which allows us to charge a customer
     const getClientSecret = async () => {
       const response = await axios({
         method: "post",
-        // Stripe expects the total in a currencies subunits
         url: `/payments/create?total=${getBasketTotal(basket) * 100}`,
       });
       setClientSecret(response.data.clientSecret);
@@ -36,11 +34,10 @@ function Payment() {
     getClientSecret();
   }, [basket]);
 
-  console.log("the secret is ", clientSecret);
-  console.log(user);
+  // console.log("the secret is ", clientSecret);
+  console.log("person", user);
 
   const handleSubmit = async (event) => {
-    // do all the fancy stripe stuff...
     event.preventDefault();
     setProcessing(true);
 
@@ -51,8 +48,6 @@ function Payment() {
         },
       })
       .then(({ paymentIntent }) => {
-        // paymentIntent = payment confirmation
-
         db.collection("users")
           .doc(user?.uid)
           .collection("orders")
@@ -76,8 +71,6 @@ function Payment() {
   };
 
   const handleChange = (event) => {
-    // Listen for changes in the CardElement
-    // and display any errors as the customer types their card details
     setDisabled(event.empty);
     setError(event.error ? event.error.message : "");
   };
@@ -94,7 +87,7 @@ function Payment() {
           </div>
           <div className={styles.address}>
             <p>{user?.email}</p>
-            <p>123 Rect lane</p>
+            <p>123 React lane</p>
             <p>Los Angels, CA</p>
           </div>
         </div>
