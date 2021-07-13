@@ -7,12 +7,14 @@ import { useStateValue } from "./StateProvider";
 import { auth } from "./Firebase";
 
 function Header() {
+  const [{ basket, user }] = useStateValue();
+
+  
   const handleAunthentication = () => {
     if (user) {
       auth.signOut();
     }
   };
-  const [{ basket, user }] = useStateValue();
 
   return (
     <div className={styles.header}>
